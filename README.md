@@ -42,17 +42,17 @@ Given plaintexts in the same coset of D_i, the programs counts the number of col
 - J = 0, 2, 3
 - J = 1, 2, 3
 
-It prints this number n and the corresponding n % 2.
-We expect that for AES all the numbers n are even, while we expect that at least one of these numbers is odd number in the random case with probability higher than 99% if more than 2 initial cosets of D_i are used (for a total of 2^33 tests).
+It prints this number n and the corresponding n % 8.
+We expect that for AES all the numbers n are even, while we expect that at least one of these numbers is odd number in the random case with probability higher than 99% if more than a single initial coset of D_i is used (for a total of 2^32 tests).
 
-The number of cosets of D_i used (i.e. number of different cosets used) is defined by "NUMBER_TEST" at line 7 (it is equal to 2 by default).
+The number of cosets of D_i used (i.e. number of different cosets used) is defined by "NUMBER_TEST" at line 7 (it is equal to 1 by default).
 Note: DON'T MODIFY "NUMBER_CP" and "N_Round".
 
 The programs print also the computational cost, which can be compared with the theoretical one.
 
 Average Time of Execution:
-1) "AES_5Round_Distinguisher.c": 3 sec (setting: NUMBER_TEST=2 and RANDOM_GENERATION = 0);
-2) "AES_5Round_Distinguisher_hashTable.c": < 1 sec (setting: NUMBER_TEST=2 and RANDOM_GENERATION = 0).
+1) "AES_5Round_Distinguisher.c": < 1 sec (setting: NUMBER_TEST=1 and RANDOM_GENERATION = 0);
+2) "AES_5Round_Distinguisher_hashTable.c": < 0.5 sec (setting: NUMBER_TEST=1 and RANDOM_GENERATION = 0).
 
 Finally, the Random Generator used in this code is the "Mersenne Twister" one, developed by 1997 by Makoto Matsumoto
 and Takuji Nishimura - MT19937, and that can be found in http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/CODES/mt19937ar.c
