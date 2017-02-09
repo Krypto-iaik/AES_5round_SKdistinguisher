@@ -43,7 +43,7 @@ We also attach the following:
 #define N_Round 5
 #define NUMBER_CP 65536
 /**PLEASE: DON'T MODIFY THE PREVIOUS TWO NUMBERS!*/
-#define NUMBER_TEST 2
+#define NUMBER_TEST 1
 #define RANDOM_GENERATION 0
 /**0: in the random case, the ciphertexts are generated as 25 AES encryption; 1: in a random way.
 NOTE: 0 is much much faster than 1!*/
@@ -881,7 +881,7 @@ unsigned long int subspaceTest(word8 key[][4])
                     printf(",");
             }
         }
-        printf(" - %d - %d\n", numero, (numero%2));
+        printf(" - %d - %d\n", numero, (numero%8));
 
         if((numero%2) != 0)
         {
@@ -1056,7 +1056,7 @@ unsigned long int randomTest(word8 key[][4])
                     printf(",");
             }
         }
-        printf(" - %d - %d\n", numero, (numero%2));
+        printf(" - %d - %d\n", numero, (numero%8));
 
         if((numero%2) != 0)
         {
@@ -1113,7 +1113,7 @@ int main()
     printf("For each of the %d tests, the program generates texts and counts the total number of collisions both in the random and in the subspace case.\n\n", NUMBER_TEST);
 
     printf("It prints the following things:\n");
-    printf("Subspace of M -\nNumber of Collisions -\nCollision % 2\n\n");
+    printf("Subspace of M -\nNumber of Collisions -\nCollision % 8\n\n");
 
     //initialize seed
     //srand(time(NULL));
@@ -1143,6 +1143,7 @@ int main()
          if(nn2 == 1)
          {
              printf("Something Wrong...\n");
+             flag = 1;
              return 1;
          }
     }
