@@ -82,10 +82,10 @@ int randomInRange(int min, int max){
   int range = max - min + 1;
   int a, b, c, d;
 
-  a = rand();
-  b = rand();
-  c = rand();
-  d = a*b;
+  a = (rand()) % range;
+  b = (rand()) % range;
+  c = (rand()) % range;
+  d = (a*b) % range;
   d = (d+c) % range;
 
   return (min + d);
@@ -883,7 +883,7 @@ unsigned long int subspaceTest(word8 key[][4])
         }
         printf(" - %d - %d\n", numero, (numero%8));
 
-        if((numero%2) != 0)
+        if((numero%8) != 0)
         {
             printf("\t NOTE: Something Wrong!\n");
             finalRes = 1;
@@ -1058,7 +1058,7 @@ unsigned long int randomTest(word8 key[][4])
         }
         printf(" - %d - %d\n", numero, (numero%8));
 
-        if((numero%2) != 0)
+        if((numero%8) != 0)
         {
             printf("\t NOTE: Random Permutation!\n");
             finalRes = 1;
@@ -1124,10 +1124,12 @@ int main()
     {
         printf("Number Test: %d\n", i+1);
 
-        /*if((i%1) == 0)
+        //create a random key;
+        for(k=0;k<4;k++)
         {
-            printf("%lu - %lu - %lu - %lu - %lu\n", i, numero, numero2, nn, nn2);
-        }*/
+            for(j=0;j<4;j++)
+                key[j][k] = (word8) randomInRange(0, 15);
+        }
 
         for(j=0;j<NUMBER_CP; j++)
         {
@@ -1152,6 +1154,14 @@ int main()
 
     for(i=0; i < NUMBER_TEST; i++)
     {
+
+        //create a random key;
+        for(k=0;k<4;k++)
+        {
+            for(j=0;j<4;j++)
+                key[j][k] = (word8) randomInRange(0, 15);
+        }
+
         printf("Number Test: %d\n", i+1);
 
         for(j=0;j<NUMBER_CP; j++)
