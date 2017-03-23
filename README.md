@@ -2,7 +2,7 @@
 
 Secret-Key Distinguisher for 5-round of AES.
 
-We refer to "A New Structural-Differential Property of 5-Round AES" of L. Grassi, C. Rechberger and S. Ronjom (see https://eprint.iacr.org/) for a complete description. We limit here to briefly describe the implementations.
+We refer to "A New Structural-Differential Property of 5-Round AES" of L. Grassi, C. Rechberger and S. Ronjom (see https://eprint.iacr.org/2017/118) for a complete description. We limit here to briefly describe the implementations.
 
 0) AES_smallScaleVersion.c
 
