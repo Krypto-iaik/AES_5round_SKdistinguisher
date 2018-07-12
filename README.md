@@ -10,15 +10,17 @@ We refer to "A New Structural-Differential Property of 5-Round AES" of L. Grassi
 
 2) AES_5Round_Distinguisher_hashTable.c
 
+3) AESmultiple-of-8.ccp
+
 The programs should run with almost C-compilers (we have used gcc version 4.8.1). None of these programs is speed-optimized, they are for verification purposes only.
 
 In all the programs, the main function is always the last one.
 
-The first program contains our implementation of small scale version of AES (encryption and decryption), that is AES with words of 4 bits instead of 8. 
+--(0)-- The first program contains our implementation of small scale version of AES (encryption and decryption), that is AES with words of 4 bits instead of 8. 
 A complete description of it can be found in "Small Scale Variants of the AES", C. Cid et al. - http://link.springer.com/chapter/10.1007%2F11502760_10 
 It has been verified against test-vectors.
 
-The other two are the secret-key distinguishers on 5-rounds of AES:
+--(1-2)-- The other two are the secret-key distinguishers on 5-round (small-scale) AES:
 1) "AES_5Round_Distinguisher.c" uses a re-ordering algorithm to implement the distinguisher;
 2) "AES_5Round_Distinguisher_hashTable.c" uses hash-table/array to implement the distinguisher.
 A complete description of the distinguisher and of the implementations can be found in the paper.
@@ -54,5 +56,11 @@ Average Time of Execution:
 1) "AES_5Round_Distinguisher.c": < 1 sec (setting: NUMBER_TEST=1 and RANDOM_GENERATION = 0);
 2) "AES_5Round_Distinguisher_hashTable.c": < 0.5 sec (setting: NUMBER_TEST=1 and RANDOM_GENERATION = 0).
 
-Finally, the Random Generator used in this code is the "Mersenne Twister" one, developed by 1997 by Makoto Matsumoto
+Tthe Random Generator used in this code is the "Mersenne Twister" one, developed by 1997 by Makoto Matsumoto
 and Takuji Nishimura - MT19937, and that can be found in http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/MT2002/CODES/mt19937ar.c
+
+--(3)-- The last one is the distinguisher implemented for real (full-scale) AES. It works as the ones just described. 
+The flags to compile the code on unix machines is:
+
+g++ -o <name> -g -O0 -Wall -msse2 -msse -march=native -maes -lpthread main.cpp
+
